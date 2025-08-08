@@ -1,0 +1,76 @@
+server.port: 8081
+spring:
+  application:
+    name: springbootDemo001
+
+  #redis配置
+  data:
+    redis:
+      host: 192.168.137.130
+      port: 6379
+      password: redis123
+      database: 0
+      timeout: 10s
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-active: 8
+          max-wait: -1ms
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.137.130:3306/mysql_db01
+    username: root
+    password: root
+
+  #AI配置
+  ai:
+    dashscope:
+      api-key: sk-6e80764b060a421f949b26f36a8b6d63
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      chat:
+        options:
+          model: deepseek-r1
+
+
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    com.example.demo: debug
+
+
+#MyBatis的相关配置
+#mybatis:
+#  #Mapper映射XML文件，建议写在resources目录下
+#  mapper-locations: classpath:mappers/\*.xml
+#  #配置别名包
+#  type-aliases-package: com.example.demo.DTO.entity
+#  #开启驼峰命名
+#  configuration:
+#    map-underscore-to-camel-case: true
+
+#mybatis plus配置
+mybatis-plus:
+  type-aliases-package: com.example.demo.DTO.entity
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      update-strategy: NOT_NULL
+
+#      logic-delete-field: flag #逻辑删除字段
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+
+
+
+#分页查询
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true

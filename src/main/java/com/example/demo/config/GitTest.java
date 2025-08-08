@@ -11,5 +11,6 @@ public class GitTest {
         System.out.println("hello master v2");
         System.out.println("hello master v3");
         System.out.println("pull test v1");
+        System.out.println("pull test v2");
     }
 }
